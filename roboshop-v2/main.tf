@@ -12,16 +12,16 @@ variable "security_groups" {
 
 variable "component" {
   default = {
-    frontend ={}
-    catalogue ={}
-    mongodb ={}
-    user ={}
-    redis ={}
-    cart ={}
-    mysql ={}
-    shipping ={}
-    payment ={}
-    rabbitmq ={}
+    frontend = { name = "frontend" }
+    catalogue = { name = "catalogue" }
+    mongodb = { name = "mongodb" }
+    user = { name = "user" }
+    redis = { name = "redis" }
+    cart = { name = "cart" }
+    mysql = { name = "mysql" }
+    shipping = { name = "shipping" }
+    payment = { name = "payment" }
+    rabbitmq = { name = "rabbitmq" }
 
   }
 }
@@ -34,7 +34,7 @@ resource "aws_instance" "instance" {
 
   tags = {
 
-    Name = lookup(each.key, null )
+    Name = lookup(each.value, "name" null )
   }
 
 }
