@@ -26,6 +26,10 @@ variable "component" {
   }
 }
 
+variable "zone_id"{
+  default = "Z0021413JFIQEJP9ZO9Z"
+}
+
 resource "aws_instance" "instance" {
   for_each               = var.component
   ami                    = var.ami
@@ -37,4 +41,13 @@ resource "aws_instance" "instance" {
     Name = lookup(each.value, "name", null )
   }
 
+}
+
+resource "aws_route53_record" "record" {
+  for_each    = var.component
+  name        = "${lookup(each.value, "name", null )}.soujandevops.online"
+  type        = "A"
+  zone_id     = var.zone_id
+  ttl         = 30
+  records     = [lookup(lookup(aws_instance.instance, each.key, null ), "private_ip", null)]
 }
