@@ -27,7 +27,7 @@ variable "component" {
 }
 
 variable "zone_id"{
-  default = "Z0021413JFIQEJP9ZO9Z"
+  default = "Z058570517M4881XN7FK9"
 }
 
 resource "aws_instance" "instance" {
