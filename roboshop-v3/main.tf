@@ -6,6 +6,7 @@ module "components" {
   zone_id           = var.zone_id
   name              = each.value["name"]
   instance_type     = each.value["instance_type"]
+  ami               = var.ami
 }
 
 
