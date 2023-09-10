@@ -23,8 +23,8 @@ variable "components" {
       instance_type="t3.micro"
     }
 
-    catalouge  = {
-      name="catalouge"
+    catalogue  = {
+      name="catalogue"
       instance_type="t3.micro"
     }
 
